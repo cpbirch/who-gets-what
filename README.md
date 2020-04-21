@@ -12,3 +12,28 @@ So we made up axioms about our business.
 4. We want to accept orders for PPE equipment.
 5. We want to eventually and consistently confirm who is getting which box on which day.
 
+
+
+## Setup
+
+1. Run all tests, covering frontend and backend
+
+    ```bash
+    $ ./gradlew
+    ```
+
+    This will also install the NPM dependencies
+
+1. Package all as one JAR
+
+    ```bash
+    $ ./gradlew assembleAll
+    ```
+
+1. Run the assembled application
+
+    ```bash
+    $ java -jar backend/build/libs/backend-1.0-all.jar
+    ```
+
+    Application will be available at: [http://localhost:8080](http://localhost:8080).

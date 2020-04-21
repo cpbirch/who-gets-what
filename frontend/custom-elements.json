@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "who-gets-what",
+      "description": "Who Gets What",
+      "properties": [
+        {
+          "name": "title",
+          "type": "String",
+          "description": "Who Gets What",
+          "default": "Who Gets What"
+        }
+      ],
+      "events": [],
+      "slots": [],
+      "cssProperties": []
+    }
+  ]
+}
