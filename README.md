@@ -12,6 +12,11 @@ So we made up axioms about our business.
 4. We want to accept orders for PPE equipment.
 5. We want to eventually and consistently confirm who is getting which box on which day.
 
+There are some interesting scenarios to solve.
+* Given more than 21 requests for PPE, what happens to allocations?
+* Adding a constraints: 21 Circle PPE can made each week, but only 12 Triangle PPE and 5 Square PPE. How are requests allocated fairly?
+* Pandemics spread around a globe causing the first affected to order all the PPE equipment.  Now that more requestors are are asking for PPE, how can we allocate it fairly? Do we redistribute allocations automatically?
+
 
 
 ## Setup
