@@ -1,5 +1,15 @@
+# Gauge - metadata dir
+.gauge
+
+# Gauge - log files dir
+logs
+
+# Gauge - reports dir
+reports
+
 coverage
 dist
 node_modules
 npm-debug.log
 package-lock.json
+.vscode

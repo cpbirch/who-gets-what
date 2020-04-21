@@ -21,13 +21,18 @@ There are some interesting scenarios to solve.
 
 ## Setup
 
-1. Run all tests, covering frontend and backend
-
+1. Run the tests. 
+    
+    Backend tests can be run using:
+    
     ```bash
     $ ./gradlew
     ```
 
-    This will also install the NPM dependencies
+    The frontend only has journey tests whose flow is yet to be fully automated. To run the tests manually, ensure that your application is running as shown in setup step 4 and run:
+    ```bash
+    $ ./npm run journey-tests
+    ```
 
 1. Package all as one JAR
 

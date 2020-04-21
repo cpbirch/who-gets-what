@@ -24,12 +24,6 @@ task("build", NpmTask::class) {
   dependsOn("install-dependencies")
 }
 
-task("test", NpmTask::class) {
-  group = "test"
-  description = "Test the frontend application"
-  setNpmCommand("run-script", "test")
-  dependsOn("install-dependencies")
-}
 
 task("install-dependencies", NpmTask::class) {
   group = "build"

@@ -1,0 +1,53 @@
+html,
+body {
+    margin: 0;
+    padding: 6em;
+    font-family: sans-serif;
+    background-color: #ededed;
+}
+
+.shapes,
+.field {
+    display: flex;
+    align-items: center;
+}
+
+.field>label {
+    padding: 20px;
+}
+
+.field>input {
+    line-height: 2em;
+    padding: 0.3em;
+    min-width: 400px;
+    font-size: 1em;
+}
+
+.shapes>div:first-child {
+    margin-left: 0px;
+}
+
+.shapes>div {
+    margin-left: 10px;
+}
+
+.square {
+    height: 30px;
+    width: 30px;
+    background-color: blue;
+}
+
+.circle {
+    height: 30px;
+    width: 30px;
+    background-color: yellow;
+    border-radius: 50%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid green;
+}
