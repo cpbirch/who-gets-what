@@ -15,6 +15,7 @@ So we made up axioms about our business.
 There are some interesting scenarios to solve.
 * Given more than 21 requests for PPE, what happens to allocations?
 * Adding a constraints: 21 Circle PPE can made each week, but only 12 Triangle PPE and 5 Square PPE. How are requests allocated fairly?
+* Some requestors come from larger populations, for example, an NHS requestor requires more PPE than a local dentists office.  Can we allocate fairly based on who is making the request?
 * Pandemics spread around a globe causing the first affected to order all the PPE equipment.  Now that more requestors are are asking for PPE, how can we allocate it fairly? Do we redistribute allocations automatically?
 
 
