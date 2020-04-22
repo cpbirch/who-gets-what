@@ -31,20 +31,6 @@ export class WhoGetsWhat extends LitElement {
         display: block;
       }
 
-      .logo > svg {
-        margin-top: 24px;
-        animation: app-logo-spin infinite 20s linear;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
       .app-footer {
         font-size: calc(12px + 0.5vmin);
         align-items: center;
@@ -114,19 +100,25 @@ export class WhoGetsWhat extends LitElement {
 
         <div class="field">
           <label for="name"><b>Name:</b></label>
-          <input type="text" name="name" />
+          <input type="text" name="name" aria-label="name" id="name" />
         </div>
 
         <div class="field">
           <label for="shape"><b>Shape:</b></label>
           <div class="shapes">
-            <input type="radio" name="shapes" value="square" />
+            <input type="radio" name="shapes" aria-label="square" id="square" value="square" />
             <label for="square" class="square"></label>
 
-            <input type="radio" name="shapes" value="circle" />
+            <input type="radio" name="shapes" aria-label="circle" id="circle" value="circle" />
             <label for="circle" class="circle"></label>
 
-            <input type="radio" name="shapes" value="triangle" />
+            <input
+              type="radio"
+              name="shapes"
+              aria-label="triangle"
+              id="triangle"
+              value="triangle"
+            />
             <label for="triangle" class="triangle"></label>
           </div>
         </div>
