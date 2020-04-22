@@ -53,6 +53,52 @@ export class WhoGetsWhat extends LitElement {
       .app-footer a {
         margin-left: 5px;
       }
+
+      .shapes,
+      .field {
+        display: flex;
+        align-items: center;
+      }
+
+      .field > label {
+        padding: 20px;
+      }
+
+      .field > input {
+        line-height: 2em;
+        padding: 0.3em;
+        min-width: 400px;
+        font-size: 1em;
+      }
+
+      .shapes > div:first-child {
+        margin-left: 0px;
+      }
+
+      .shapes > div {
+        margin-left: 10px;
+      }
+
+      .square {
+        height: 30px;
+        width: 30px;
+        background-color: blue;
+      }
+
+      .circle {
+        height: 30px;
+        width: 30px;
+        background-color: yellow;
+        border-radius: 50%;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 30px solid green;
+      }
     `;
   }
 
@@ -65,6 +111,25 @@ export class WhoGetsWhat extends LitElement {
     return html`
       <main>
         <div>${this.caption}</div>
+
+        <div class="field">
+          <label for="name"><b>Name:</b></label>
+          <input type="text" name="name" />
+        </div>
+
+        <div class="field">
+          <label for="shape"><b>Shape:</b></label>
+          <div class="shapes">
+            <input type="radio" name="shapes" value="square" />
+            <label for="square" class="square"></label>
+
+            <input type="radio" name="shapes" value="circle" />
+            <label for="circle" class="circle"></label>
+
+            <input type="radio" name="shapes" value="triangle" />
+            <label for="triangle" class="triangle"></label>
+          </div>
+        </div>
       </main>
 
       <p class="app-footer">
