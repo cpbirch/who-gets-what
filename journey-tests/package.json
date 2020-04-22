@@ -1,0 +1,11 @@
+{
+    "name": "who-gets-what",
+    "version": "0.0.1",
+    "description": "Who Gets What Journey Tests",
+    "scripts": {
+        "test": "gauge run specs/"
+    },
+    "dependencies": {
+        "taiko": "^1.0.8"
+    }
+}

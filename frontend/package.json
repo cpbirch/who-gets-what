@@ -1,27 +1,24 @@
 {
-  "scripts": {
-    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
-    "install-dependencies": "npm install",
-    "clean": "rimraf dist",
-    "build": "rollup -c rollup.config.js",
-    "start": "es-dev-server --app-index index.html --node-resolve --open --watch",
-    "journey-test": "gauge run specs/"
-  },
-  "devDependencies": {
-    "es-dev-server": "^1.46.4",
-    "eslint": "^6.8.0",
-    "eslint-plugin-html": "^6.0.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.6.1",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-index-html": "^1.11.1"
-  },
-  "name": "who-gets-what",
-  "version": "1.0.0",
-  "description": "Who Gets What",
-  "author": "The Maltesers",
-  "license": "MIT",
-  "dependencies": {
-    "taiko": "^1.0.8"
-  }
+    "scripts": {
+        "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+        "install-dependencies": "npm install",
+        "clean": "rimraf dist",
+        "build": "rollup -c rollup.config.js",
+        "start": "es-dev-server --app-index index.html --node-resolve --open --watch",
+        "journey-test": "gauge run specs/"
+    },
+    "devDependencies": {
+        "es-dev-server": "^1.46.4",
+        "eslint": "^6.8.0",
+        "eslint-plugin-html": "^6.0.2",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.6.1",
+        "rollup-plugin-copy": "^3.3.0",
+        "rollup-plugin-index-html": "^1.11.1"
+    },
+    "name": "who-gets-what",
+    "version": "1.0.0",
+    "description": "Who Gets What",
+    "author": "The Maltesers",
+    "license": "MIT"
 }

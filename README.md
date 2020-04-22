@@ -21,18 +21,13 @@ There are some interesting scenarios to solve.
 
 ## Setup
 
-1. Run the tests. 
-    
-    Backend tests can be run using:
+1. Run the tests.
     
     ```bash
     $ ./gradlew
     ```
 
-    The frontend only has journey tests whose flow is yet to be fully automated. To run the tests manually, ensure that your application is running as shown in setup step 4 and run:
-    ```bash
-    $ ./npm run journey-tests
-    ```
+    For the time being, we only have tests for the backend. Frontend tests will be added shortly.
 
 1. Package all as one JAR
 
@@ -47,3 +42,10 @@ There are some interesting scenarios to solve.
     ```
 
     Application will be available at: [http://localhost:8080](http://localhost:8080).
+
+1. Run the journey tests
+
+    ```bash
+    $ cd journey-tests
+    $ npm run test
+    ```
