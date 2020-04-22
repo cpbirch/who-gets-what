@@ -12,11 +12,11 @@ subprojects {
 task("copyFrontendResources") {
     group = "build"
     description = "Copy frontend resources into backend"
-    dependsOn(":frontend:build")
+    dependsOn(":frontend-open-wc:build")
 
     doFirst {
         copy {
-            from("./frontend/dist")
+            from("./frontend-open-wc/dist")
             into("./backend/generated/main/resources/web")
         }
     }
