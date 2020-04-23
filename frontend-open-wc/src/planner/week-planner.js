@@ -71,12 +71,14 @@ export class WeekPlanner extends LitElement {
   }
 
   render() {
+    const data = ['AA', 'BB', 'CC'];
+
     return html`
       <main>
         <div>${this.caption}</div>
 
         <div class="planner">
-          <day-planner caption="Monday"></day-planner>
+          <day-planner caption="Monday" blocks=${JSON.stringify(data)}></day-planner>
           <day-planner caption="Tuesday"></day-planner>
           <day-planner caption="Wednesday"></day-planner>
           <day-planner caption="Thursday"></day-planner>
