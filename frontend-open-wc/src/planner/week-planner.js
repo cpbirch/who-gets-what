@@ -1,4 +1,5 @@
 import { css, html, LitElement } from 'lit-element';
+import './day-planner.js';
 
 export class WeekPlanner extends LitElement {
   static get properties() {
@@ -56,6 +57,11 @@ export class WeekPlanner extends LitElement {
         min-width: 400px;
         font-size: 1em;
       }
+
+      .planner {
+        column-count: 5;
+        column-gap: 50px;
+      }
     `;
   }
 
@@ -68,6 +74,14 @@ export class WeekPlanner extends LitElement {
     return html`
       <main>
         <div>${this.caption}</div>
+
+        <div class="planner">
+          <day-planner></day-planner>
+          <day-planner></day-planner>
+          <day-planner></day-planner>
+          <day-planner></day-planner>
+          <day-planner></day-planner>
+        </div>
       </main>
 
       <p class="app-footer">
