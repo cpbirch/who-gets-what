@@ -13,12 +13,12 @@ export class DayPlanner extends LitElement {
 
   constructor() {
     super();
-    this.caption = 'Day Planner';
+    this.caption = '';
   }
 
   render() {
     return html`
-      <div>${this.caption}</div>
+      <div class="caption">${this.caption}</div>
     `;
   }
 }
