@@ -1,11 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import '../src/who-gets-what-planner.js';
+import '../src/who-gets-what.js';
 
-describe('Who Gets What Planner', () => {
+describe('Who Gets What', () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <who-gets-what-planner></who-gets-what-planner>
+      <who-gets-what></who-gets-what>
     `);
   });
 
