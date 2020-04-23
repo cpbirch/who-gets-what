@@ -11,21 +11,22 @@ export class DayPlanner extends LitElement {
   static get styles() {
     return css`
       .caption {
-        height: 48px;
         background-color: white;
         border: 1px solid lightgray;
         color: black;
+        margin: auto;
+        padding: 10px;
+        font-size: 22pt;
       }
 
       .blocks-container {
-        column-count: 1;
+        display: flex;
+        flex-direction: column;
       }
 
       .block {
         background-color: blue;
         color: white;
-        display: flex;
-        flex-direction: column;
       }
     `;
   }

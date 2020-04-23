@@ -12,55 +12,33 @@ export class WeekPlanner extends LitElement {
     return css`
       :host {
         min-height: 100vh;
-        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         font-size: calc(10px + 2vmin);
         color: #1a2b42;
         max-width: 960px;
-        margin: 0 auto;
+        margin: 10 auto;
         text-align: center;
       }
 
-      main {
+      .week-planner {
+        display: block;
         flex-grow: 1;
       }
 
-      main span {
-        margin: 12px;
-        display: block;
+      .caption {
+      }
+
+      .day-container {
+        column-count: 5;
+        column-gap: 50px;
+        column-width: 200px;
       }
 
       .app-footer {
         font-size: calc(12px + 0.5vmin);
         align-items: center;
-      }
-
-      .app-footer a {
-        margin-left: 5px;
-      }
-
-      .shapes,
-      .field {
-        display: flex;
-        align-items: center;
-      }
-
-      .field > label {
-        padding: 20px;
-      }
-
-      .field > input {
-        line-height: 2em;
-        padding: 0.3em;
-        min-width: 400px;
-        font-size: 1em;
-      }
-
-      .planner {
-        column-count: 5;
-        column-gap: 50px;
       }
     `;
   }
@@ -71,20 +49,30 @@ export class WeekPlanner extends LitElement {
   }
 
   render() {
-    const data = ['AA', 'BB', 'CC'];
+    const data = [
+      { caption: 'Monday', blocks: ['AA', 'BB', 'CC'] },
+      { caption: 'Tuesday', blocks: ['BB', 'AA'] },
+      { caption: 'Wednesday', blocks: ['CC'] },
+      { caption: 'Thursday', blocks: ['AA', 'CC'] },
+      { caption: 'Friday', blocks: ['BB'] },
+    ];
 
     return html`
-      <main>
-        <div>${this.caption}</div>
+      <div class="week-planner">
+        <div class="caption">${this.caption}</div>
 
-        <div class="planner">
-          <day-planner caption="Monday" blocks=${JSON.stringify(data)}></day-planner>
-          <day-planner caption="Tuesday"></day-planner>
-          <day-planner caption="Wednesday"></day-planner>
-          <day-planner caption="Thursday"></day-planner>
-          <day-planner caption="Friday"></day-planner>
+        <div class="day-container">
+          ${data.map(
+            item =>
+              html`
+                <day-planner
+                  caption=${item.caption}
+                  blocks=${JSON.stringify(item.blocks)}
+                ></day-planner>
+              `,
+          )}
         </div>
-      </main>
+      </div>
 
       <p class="app-footer">
         Made with love and passion by: Chris Birch, James Emmott, Christine Nagadya, Jyoti Singh and
