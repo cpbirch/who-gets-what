@@ -10,9 +10,13 @@ export class DayPlanner extends LitElement {
 
   static get styles() {
     return css`
+      .day-planner {
+        height: 100vh;
+      }
+
       .caption {
-        background-color: white;
-        border: 1px solid lightgray;
+        background-color: #ffffff;
+        border: 1px solid #708090;
         color: black;
         margin: auto;
         padding: 10px;
@@ -25,8 +29,11 @@ export class DayPlanner extends LitElement {
       }
 
       .block {
-        background-color: blue;
+        background-color: #0000ff;
+        border: 1px solid #000066;
         color: white;
+        padding-top: 12px;
+        padding-bottom: 12px;
       }
     `;
   }
@@ -39,15 +46,16 @@ export class DayPlanner extends LitElement {
 
   render() {
     return html`
-      <div class="caption">${this.caption}</div>
-
-      <div class="blocks-container">
-        ${this.blocks.map(
-          item =>
-            html`
-              <div class="block">${item}</div>
-            `,
-        )}
+      <div class="day-planner">
+        <div class="caption">${this.caption}</div>
+        <div class="blocks-container">
+          ${this.blocks.map(
+            item =>
+              html`
+                <div class="block">${item}</div>
+              `,
+          )}
+        </div>
       </div>
     `;
   }

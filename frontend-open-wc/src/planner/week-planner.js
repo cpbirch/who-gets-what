@@ -28,6 +28,7 @@ export class WeekPlanner extends LitElement {
       }
 
       .caption {
+        margin: 12px;
       }
 
       .day-container {
