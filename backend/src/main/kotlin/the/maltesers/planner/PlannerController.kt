@@ -10,7 +10,7 @@ class PlannerController internal constructor(
   private var service: PlannerService
 ) {
 
-  @Get("/count", produces = [MediaType.APPLICATION_JSON])
-  fun count(): HttpResponse<PlannerCount> =
-    HttpResponse.ok(service.count())
+  @Get("/count/{year}/{week}", produces = [MediaType.APPLICATION_JSON])
+  fun count(year: Int, week: Int): HttpResponse<PlannerCount> =
+    HttpResponse.ok(service.count(year, week))
 }

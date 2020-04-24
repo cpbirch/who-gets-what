@@ -31,8 +31,8 @@ object DatabaseHelper {
       CreatedSlot(slotId = it.value)
     }
 
-  fun createRandomSlot(): Pair<CreatedSlot, CreateSlot> {
-    val create = SlotHelper.random()
+  fun createRandomSlot(year: Int = 2020, week: Int = 20): Pair<CreatedSlot, CreateSlot> {
+    val create = SlotHelper.random(year, week)
     val created = createSlot(create)
     return created to create
   }

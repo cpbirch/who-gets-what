@@ -21,13 +21,15 @@ class CountPlannerControllerTest(
   "should return the number of polls" {
     val mock = getMock(service)
 
-    val count = PlannerCount(pending = 42)
-    every { mock.count() } returns count
+    val year = 2020
+    val week = 20
+    val count = PlannerCount(total = 42)
+    every { mock.count(year = year, week = week) } returns count
 
-    val response = client.toBlocking().retrieve(HttpRequest.GET<Any>("/"), PlannerCount::class.java)
+    val response = client.toBlocking().retrieve(HttpRequest.GET<Any>("/$year/$week"), PlannerCount::class.java)
     response shouldBe count
 
-    verify(exactly = 1) { mock.count() }
+    verify(exactly = 1) { mock.count(year = year, week = week) }
 
     /* The hashCode() method is invoked by Micronaut */
     verify(exactly = 2) { mock.hashCode() }

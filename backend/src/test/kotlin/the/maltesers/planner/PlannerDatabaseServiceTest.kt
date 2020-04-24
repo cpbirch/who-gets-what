@@ -18,23 +18,25 @@ class PlannerDatabaseServiceTest(
       emptyDatabase()
 
       val service = PlannerDatabaseService(database)
-      val result = service.count()
-      result.pending shouldBe 0
+      val result = service.count(year = 2020, week = 20)
+      result.total shouldBe 0
     }
   }
 
   "should return the number of plans present in the database" {
     runAndRollback(database) {
+      val year = 2020
+      val week = 20
       val size = 42
 
       emptyDatabase()
       repeat(size) {
-        createRandomSlot()
+        createRandomSlot(year = year, week = week)
       }
 
       val service = PlannerDatabaseService(database)
-      val result = service.count()
-      result.pending shouldBe size
+      val result = service.count(year = year, week = week)
+      result.total shouldBe size
     }
   }
 })

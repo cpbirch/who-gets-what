@@ -2,5 +2,5 @@ package the.maltesers.planner
 
 interface PlannerService {
 
-  fun count(): PlannerCount
+  fun count(year: Int, week: Int): PlannerCount
 }
