@@ -3,7 +3,9 @@ import { css, html, LitElement } from 'lit-element';
 export class WhoGetsWhat extends LitElement {
   static get properties() {
     return {
-      caption: { type: String },
+      caption: String,
+      name: String,
+      selectedShape: String,
     };
   }
 
@@ -91,7 +93,17 @@ export class WhoGetsWhat extends LitElement {
   constructor() {
     super();
     this.caption = 'Who Gets What';
+    this.name = '';
+    this.selectedShape = '';
   }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this[name] = value;
+  }
+
+  /* eslint-disable class-methods-use-this */
+  requestPPE() {}
 
   render() {
     return html`
@@ -100,16 +112,37 @@ export class WhoGetsWhat extends LitElement {
 
         <div class="field">
           <label for="name"><b>Name:</b></label>
-          <input type="text" name="name" aria-label="name" id="name" />
+          <input
+            type="text"
+            name="name"
+            aria-label="name"
+            id="name"
+            .value="${this.name}"
+            @change=${this.handleChange}
+          />
         </div>
 
         <div class="field">
           <label for="shape"><b>Shape:</b></label>
           <div class="shapes">
-            <input type="radio" name="shapes" aria-label="square" id="square" value="square" />
+            <input
+              type="radio"
+              name="shapes"
+              aria-label="square"
+              id="square"
+              value="square"
+              ?checked="${this.selectedShape === 'square'}"
+            />
             <label for="square" class="square"></label>
 
-            <input type="radio" name="shapes" aria-label="circle" id="circle" value="circle" />
+            <input
+              type="radio"
+              name="shapes"
+              aria-label="circle"
+              id="circle"
+              value="circle"
+              ?checked="${this.selectedShape === 'circle'}"
+            />
             <label for="circle" class="circle"></label>
 
             <input
@@ -118,10 +151,13 @@ export class WhoGetsWhat extends LitElement {
               aria-label="triangle"
               id="triangle"
               value="triangle"
+              ?checked="${this.selectedShape === 'triangle'}"
             />
             <label for="triangle" class="triangle"></label>
           </div>
         </div>
+
+        <button id="request-ppe" @click="${this.requestPPE}">Request PPE</button>
       </main>
 
       <p class="app-footer">
