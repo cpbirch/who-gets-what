@@ -2,9 +2,10 @@ package the.maltesers.helper
 
 import java.util.UUID
 import the.maltesers.planner.CreateSlot
+import the.maltesers.planner.SlotState
 
 object SlotHelper {
 
   fun random(year: Int, week: Int): CreateSlot =
-    CreateSlot(year, week, "Random slot [${UUID.randomUUID()}]")
+    CreateSlot(year, week, "Random slot [${UUID.randomUUID()}]", SlotState.TAKEN)
 }

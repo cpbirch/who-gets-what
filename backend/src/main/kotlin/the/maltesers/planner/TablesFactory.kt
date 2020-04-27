@@ -7,6 +7,6 @@ import io.micronaut.context.annotation.Factory
 class TablesFactory {
 
   @Bean
-  fun plannerTable(): PlannerTable =
-    PlannerTable
+  fun slotsTable(): SlotsTable =
+    SlotsTable
 }

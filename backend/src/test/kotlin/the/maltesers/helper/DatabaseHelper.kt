@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.transactions.transaction
 import the.maltesers.planner.CreateSlot
 import the.maltesers.planner.CreatedSlot
-import the.maltesers.planner.PlannerTable
+import the.maltesers.planner.SlotsTable
 
 object DatabaseHelper {
 
@@ -19,14 +19,15 @@ object DatabaseHelper {
     }
 
   fun emptyDatabase() {
-    PlannerTable.deleteAll()
+    SlotsTable.deleteAll()
   }
 
   private fun createSlot(create: CreateSlot): CreatedSlot =
-    PlannerTable.insertAndGetId {
-      it[PlannerTable.year] = create.year
-      it[PlannerTable.week] = create.week
-      it[PlannerTable.slot] = create.slot
+    SlotsTable.insertAndGetId {
+      it[year] = create.year
+      it[week] = create.week
+      it[title] = create.title
+      it[state] = create.state
     }.let {
       CreatedSlot(slotId = it.value)
     }

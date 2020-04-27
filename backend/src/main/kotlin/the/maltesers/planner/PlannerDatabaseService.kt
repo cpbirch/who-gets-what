@@ -13,9 +13,9 @@ class PlannerDatabaseService(
 
   override fun count(year: Int, week: Int): PlannerCount =
     transaction(database) {
-      val total = PlannerTable.selectAll()
-        .andWhere { PlannerTable.year eq year }
-        .andWhere { PlannerTable.week eq week }
+      val total = SlotsTable.selectAll()
+        .andWhere { SlotsTable.year eq year }
+        .andWhere { SlotsTable.week eq week }
         .count()
       PlannerCount(total = total)
     }
