@@ -30,6 +30,12 @@ describe('Who Gets What', () => {
       expect(triangle).to.exist;
     });
 
+    it('renders the "Request PPE" button', () => {
+      const button = element.shadowRoot.getElementById('request-ppe');
+      expect(button).to.exist;
+      expect(button.textContent).to.equal('Request PPE');
+    });
+
     it('passes the a11y audit', async () => {
       await expect(element).shadowDom.to.be.accessible();
     });
