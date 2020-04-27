@@ -3,8 +3,8 @@ import { css, html, LitElement } from 'lit-element';
 export class DayPlanner extends LitElement {
   static get properties() {
     return {
-      caption: { type: String },
-      blocks: { type: Array },
+      title: { type: String },
+      slots: { type: Array },
     };
   }
 
