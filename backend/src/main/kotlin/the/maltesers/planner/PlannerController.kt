@@ -1,6 +1,5 @@
 package the.maltesers.planner
 
-import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
@@ -11,6 +10,6 @@ class PlannerController internal constructor(
 ) {
 
   @Get("/count/{year}/{week}", produces = [MediaType.APPLICATION_JSON])
-  fun count(year: Int, week: Int): HttpResponse<PlannerCount> =
-    HttpResponse.ok(service.count(year, week))
+  fun count(year: Int, week: Int): PlannerCount =
+    service.count(year, week)
 }

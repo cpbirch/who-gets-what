@@ -34,7 +34,6 @@ export class WeekPlanner extends LitElement {
       .day-container {
         column-count: 5;
         column-gap: 50px;
-        column-width: 200px;
       }
 
       .app-footer {
@@ -55,7 +54,10 @@ export class WeekPlanner extends LitElement {
       { caption: 'Tuesday', blocks: ['BB', 'AA'] },
       { caption: 'Wednesday', blocks: ['CC'] },
       { caption: 'Thursday', blocks: ['AA', 'CC'] },
-      { caption: 'Friday', blocks: ['BB'] },
+      {
+        caption: 'Friday',
+        blocks: [{ caption: 'BB', state: 'taken' }, { state: 'free' }, { state: 'free' }],
+      },
     ];
 
     return html`
@@ -76,8 +78,8 @@ export class WeekPlanner extends LitElement {
       </div>
 
       <p class="app-footer">
-        Made with love and passion by: Chris Birch, James Emmott, Christine Nagadya, Jyoti Singh and
-        Albert Attard
+        Made with love and passion by: Chris Birch, James Emmott, Christine Nagadya, Jyoti Singh,
+        Sai Charan and Albert Attard
       </p>
     `;
   }

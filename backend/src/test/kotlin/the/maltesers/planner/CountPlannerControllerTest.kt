@@ -18,7 +18,7 @@ class CountPlannerControllerTest(
   private val service: PlannerService,
   @Client("/planner/count") private val client: RxHttpClient
 ) : StringSpec({
-  "should return the number of polls" {
+  "should return the number of slots for a given week within a year" {
     val mock = getMock(service)
 
     val year = 2020
@@ -33,12 +33,11 @@ class CountPlannerControllerTest(
 
     /* The hashCode() method is invoked by Micronaut */
     verify(exactly = 2) { mock.hashCode() }
-    verify(atMost = 1) { mock.toString() }
+    verify(exactly = 1) { mock.toString() }
     confirmVerified(mock)
   }
 }) {
   @MockBean(PlannerService::class)
-  fun pollService(): PlannerService {
-    return mockk()
-  }
+  fun pollService(): PlannerService =
+    mockk()
 }
