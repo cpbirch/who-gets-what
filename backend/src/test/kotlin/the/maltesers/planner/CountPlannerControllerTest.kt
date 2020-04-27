@@ -38,6 +38,6 @@ class CountPlannerControllerTest(
   }
 }) {
   @MockBean(PlannerService::class)
-  fun pollService(): PlannerService =
+  fun plannerService(): PlannerService =
     mockk()
 }
