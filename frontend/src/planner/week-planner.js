@@ -46,74 +46,25 @@ export class WeekPlanner extends LitElement {
   constructor() {
     super();
     this.title = 'Who Gets What Planner';
+    this.data = [];
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // fetch('/planner/week/2020/0')
+    //     .then(response => response.json())
+    //     .catch((e) => {
+    //       console.log("Failed to fetch week planner", e);
+    //     }).bind(this)
   }
 
   render() {
-    const data = [
-      {
-        title: 'Monday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-      {
-        title: 'Tuesday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-      {
-        title: 'Wednesday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-      {
-        title: 'Thursday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-      {
-        title: 'Friday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-      {
-        title: 'Saturday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-      {
-        title: 'Sunday',
-        slots: [
-          { title: 'BB', state: 'taken' },
-          { title: 'Free', state: 'free' },
-          { title: 'Free', state: 'free' },
-        ],
-      },
-    ];
-
     return html`
       <div class="week-planner">
         <div class="title">${this.title}</div>
 
         <div class="days-container">
-          ${data.map(
+          ${this.data.map(
             item =>
               html`
                 <day-planner title=${item.title} slots=${JSON.stringify(item.slots)}></day-planner>

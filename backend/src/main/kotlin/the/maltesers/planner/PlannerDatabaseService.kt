@@ -19,4 +19,8 @@ class PlannerDatabaseService(
         .count()
       PlannerCount(total = total)
     }
+
+  override fun currentWeek(): List<Slots> {
+    TODO("Remember to write a test first!!")
+  }
 }

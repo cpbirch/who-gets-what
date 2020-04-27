@@ -12,4 +12,8 @@ class PlannerController internal constructor(
   @Get("/count/{year}/{week}", produces = [MediaType.APPLICATION_JSON])
   fun count(year: Int, week: Int): PlannerCount =
     service.count(year, week)
+
+  @Get("/week/current", produces = [MediaType.APPLICATION_JSON])
+  fun currentWeek(): List<Slots> =
+    service.currentWeek()
 }
