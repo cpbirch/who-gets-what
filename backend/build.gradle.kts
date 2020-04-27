@@ -65,7 +65,7 @@ dependencies {
   val logbackClassic = "1.3.0-alpha5"
   val jansi = "1.18"
   val hikari = "3.4.2"
-  val exposed = "0.17.7"
+  val exposed = "0.23.1"
   val h2 = "1.4.200"
   val mockk = "1.9.3"
   val kotlintest = "1.1.5"
@@ -86,7 +86,9 @@ dependencies {
 
   /* Data */
   implementation("com.zaxxer:HikariCP:$hikari")
-  implementation("org.jetbrains.exposed:exposed:$exposed")
+  implementation("org.jetbrains.exposed:exposed-core:$exposed")
+  implementation("org.jetbrains.exposed:exposed-jdbc:$exposed")
+  implementation("org.jetbrains.exposed:exposed-java-time:$exposed")
   implementation("com.h2database:h2:$h2")
 
   /* Logging */

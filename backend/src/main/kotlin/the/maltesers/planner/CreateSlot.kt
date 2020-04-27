@@ -1,3 +1,11 @@
 package the.maltesers.planner
 
-data class CreateSlot(val year: Int, val week: Int, val title: String, val state: SlotState)
+import java.time.LocalDate
+import java.time.temporal.WeekFields
+import java.util.Locale
+
+data class CreateSlot(val date: LocalDate, val title: String, val state: SlotState) {
+
+  val year = date.year
+  val week = date.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear())
+}

@@ -27,6 +27,7 @@ object DatabaseHelper {
     SlotsTable.insertAndGetId {
       it[year] = create.year
       it[week] = create.week
+      it[date] = create.date
       it[title] = create.title
       it[state] = create.state
     }.let {
@@ -39,6 +40,6 @@ object DatabaseHelper {
     return created to create
   }
 
-  fun countSlots(): Int =
+  fun countSlots(): Long =
     SlotsTable.selectAll().count()
 }
