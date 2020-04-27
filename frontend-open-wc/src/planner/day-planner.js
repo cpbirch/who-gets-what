@@ -14,7 +14,7 @@ export class DayPlanner extends LitElement {
         height: 100vh;
       }
 
-      .caption {
+      .title {
         background-color: #ffffff;
         border: 1px solid #708090;
         color: black;
@@ -23,12 +23,12 @@ export class DayPlanner extends LitElement {
         font-size: 22pt;
       }
 
-      .blocks-container {
+      .slots-container {
         display: flex;
         flex-direction: column;
       }
 
-      .block {
+      .slot {
         border: 1px solid #000066;
         color: white;
         padding-top: 12px;
@@ -48,19 +48,19 @@ export class DayPlanner extends LitElement {
 
   constructor() {
     super();
-    this.caption = 'Day Planner';
-    this.blocks = [];
+    this.title = 'Day Planner';
+    this.slots = [];
   }
 
   render() {
     return html`
       <div class="day-planner">
-        <div class="caption">${this.caption}</div>
-        <div class="blocks-container">
-          ${this.blocks.map(
-            item =>
+        <div class="title">${this.title}</div>
+        <div class="slots-container">
+          ${this.slots.map(
+            slot =>
               html`
-                <div class=${`block ${item.state}`}>${item.caption}</div>
+                <div class=${`slot ${slot.state}`}>${slot.title}</div>
               `,
           )}
         </div>

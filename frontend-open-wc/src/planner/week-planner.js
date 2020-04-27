@@ -4,7 +4,7 @@ import './day-planner.js';
 export class WeekPlanner extends LitElement {
   static get properties() {
     return {
-      caption: { type: String },
+      title: { type: String },
     };
   }
 
@@ -27,11 +27,11 @@ export class WeekPlanner extends LitElement {
         flex-grow: 1;
       }
 
-      .caption {
+      .title {
         margin: 12px;
       }
 
-      .day-container {
+      .days-container {
         display: flex;
         justify-content: space-around;
       }
@@ -45,81 +45,78 @@ export class WeekPlanner extends LitElement {
 
   constructor() {
     super();
-    this.caption = 'Who Gets What Planner';
+    this.title = 'Who Gets What Planner';
   }
 
   render() {
     const data = [
       {
-        caption: 'Monday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Monday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
       {
-        caption: 'Tuesday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Tuesday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
       {
-        caption: 'Wednesday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Wednesday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
       {
-        caption: 'Thursday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Thursday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
       {
-        caption: 'Friday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Friday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
       {
-        caption: 'Saturday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Saturday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
       {
-        caption: 'Sunday',
-        blocks: [
-          { caption: 'BB', state: 'taken' },
-          { caption: 'Free', state: 'free' },
-          { caption: 'Free', state: 'free' },
+        title: 'Sunday',
+        slots: [
+          { title: 'BB', state: 'taken' },
+          { title: 'Free', state: 'free' },
+          { title: 'Free', state: 'free' },
         ],
       },
     ];
 
     return html`
       <div class="week-planner">
-        <div class="caption">${this.caption}</div>
+        <div class="title">${this.title}</div>
 
-        <div class="day-container">
+        <div class="days-container">
           ${data.map(
             item =>
               html`
-                <day-planner
-                  caption=${item.caption}
-                  blocks=${JSON.stringify(item.blocks)}
-                ></day-planner>
+                <day-planner title=${item.title} slots=${JSON.stringify(item.slots)}></day-planner>
               `,
           )}
         </div>
