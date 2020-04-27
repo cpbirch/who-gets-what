@@ -1,4 +1,4 @@
-package the.maltesers.common
+package the.maltesers.clock
 
 import java.time.LocalDate
 import java.time.temporal.WeekFields
@@ -7,8 +7,9 @@ import javax.inject.Singleton
 
 @Singleton
 class SystemClockService : ClockService {
-  override fun currentWeek(): Int =
+  override fun currentWeek(): YearWeek =
     LocalDate.now().let {
-      it.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear())
+      val currentWeek = it.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear())
+      YearWeek(year = it.year, week = currentWeek)
     }
 }

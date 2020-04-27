@@ -1,6 +1,6 @@
-package the.maltesers.common
+package the.maltesers.clock
 
 interface ClockService {
 
-  fun currentWeek(): Int
+  fun currentWeek(): YearWeek
 }
