@@ -1,6 +1,7 @@
 package the.maltesers.planner
 
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
 import io.micronaut.test.annotation.MicronautTest
 import io.micronaut.test.annotation.MockBean
@@ -64,7 +65,7 @@ class PlannerDatabaseServiceTest(
     }
   }
 
-  "!should return the slots for the current week" {
+  "should return the slots for the current week" {
     runAndRollback(database) {
 
       val year = 2020
@@ -73,22 +74,45 @@ class PlannerDatabaseServiceTest(
 
       emptyDatabase()
 
-      /* Add slots for the previous, current and next weeks respectively */
-      for (offset in -1..1) {
-        repeat(size) {
-          createRandomSlot(year = year, week = week + offset)
+      val expected = (1..size)
+        .map {
+          /*
+           * Add slots for the previous, next and current weeks respectively to make sure that the filtering works.
+           * If simply add slots belonging to this week, then a select all will get the right number of slots.
+           */
+          createRandomSlot(year = year, week = week - 1)
+          createRandomSlot(year = year, week = week + 1)
+          createRandomSlot(year = year, week = week)
         }
-      }
+        .map { it.second }
+        .sortedBy { it.date }
 
       /* Verify that all data was added */
       countSlots() shouldBe size * 3
+      expected.size shouldBe size
 
       val mock = getMock(clock)
       every { mock.currentWeek() } returns YearWeek(year = year, week = week)
 
       val service = PlannerDatabaseService(database, mock)
       val result = service.currentWeek()
-      result.size shouldBe size
+
+      /* Count the actual number of slots */
+      result.map { it.slots.size }.sum() shouldBe size
+
+      /* TODO: Consider moving this into a custom matcher */
+      expected.forEach { e ->
+        val expectedDayOfWeek = e.date.dayOfWeek.name
+        val expectedTitle = e.title
+        val expectedState = e.state
+
+        val slotsInDay = result.firstOrNull { it.title == expectedDayOfWeek }
+        slotsInDay shouldNotBe null
+
+        val slot = slotsInDay?.slots?.firstOrNull { it.title == expectedTitle }
+        slot shouldNotBe null
+        slot?.state shouldBe expectedState
+      }
 
       verify(exactly = 1) { mock.currentWeek() }
 

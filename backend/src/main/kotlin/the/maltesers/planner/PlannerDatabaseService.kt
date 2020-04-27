@@ -6,6 +6,11 @@ import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import the.maltesers.clock.ClockService
+import the.maltesers.planner.SlotsTable.date
+import the.maltesers.planner.SlotsTable.state
+import the.maltesers.planner.SlotsTable.title
+import the.maltesers.planner.SlotsTable.week
+import the.maltesers.planner.SlotsTable.year
 
 @Singleton
 class PlannerDatabaseService(
@@ -23,14 +28,16 @@ class PlannerDatabaseService(
     }
 
   override fun currentWeek(): List<Slots> =
-    TODO("coming soon...")
-    // transaction {
-    //   val currentWeek = clock.currentWeek()
-    //   SlotsTable.selectAll()
-    //     .andWhere { SlotsTable.year eq currentWeek.year }
-    //     .andWhere { SlotsTable.week eq currentWeek.week }
-    //     .map {
-    //       Slot(title = it[title], state = it[state])
-    //     }
-    // }
+    transaction {
+      val currentWeek = clock.currentWeek()
+      SlotsTable.selectAll()
+        .andWhere { year eq currentWeek.year }
+        .andWhere { week eq currentWeek.week }
+        .orderBy(date)
+        .map {
+          it[date].dayOfWeek to Slot(title = it[title], state = it[state])
+        }
+        .groupBy({ it.first.name }, { it.second })
+        .map { Slots(it.key, it.value) }
+    }
 }
