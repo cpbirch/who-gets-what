@@ -5,10 +5,12 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+import the.maltesers.clock.ClockService
 
 @Singleton
 class PlannerDatabaseService(
-  private var database: Database
+  private val database: Database,
+  private val clock: ClockService
 ) : PlannerService {
 
   override fun count(year: Int, week: Int): PlannerCount =
@@ -20,7 +22,15 @@ class PlannerDatabaseService(
       PlannerCount(total = total)
     }
 
-  override fun currentWeek(): List<Slots> {
-    TODO("Remember to write a test first!!")
-  }
+  override fun currentWeek(): List<Slots> =
+    TODO("coming soon...")
+    // transaction {
+    //   val currentWeek = clock.currentWeek()
+    //   SlotsTable.selectAll()
+    //     .andWhere { SlotsTable.year eq currentWeek.year }
+    //     .andWhere { SlotsTable.week eq currentWeek.week }
+    //     .map {
+    //       Slot(title = it[title], state = it[state])
+    //     }
+    // }
 }
