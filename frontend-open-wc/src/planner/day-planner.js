@@ -29,11 +29,19 @@ export class DayPlanner extends LitElement {
       }
 
       .block {
-        background-color: #0000ff;
         border: 1px solid #000066;
         color: white;
         padding-top: 12px;
         padding-bottom: 12px;
+      }
+
+      .free {
+        background-color: #eeeeee;
+        color: #222222;
+      }
+
+      .taken {
+        background-color: #0000ff;
       }
     `;
   }
@@ -52,7 +60,7 @@ export class DayPlanner extends LitElement {
           ${this.blocks.map(
             item =>
               html`
-                <div class="block">${item}</div>
+                <div class=${`block ${item.state}`}>${item.caption}</div>
               `,
           )}
         </div>

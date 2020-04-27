@@ -32,8 +32,8 @@ export class WeekPlanner extends LitElement {
       }
 
       .day-container {
-        column-count: 5;
-        column-gap: 50px;
+        display: flex;
+        justify-content: space-around;
       }
 
       .app-footer {
@@ -50,13 +50,61 @@ export class WeekPlanner extends LitElement {
 
   render() {
     const data = [
-      { caption: 'Monday', blocks: ['AA', 'BB', 'CC'] },
-      { caption: 'Tuesday', blocks: ['BB', 'AA'] },
-      { caption: 'Wednesday', blocks: ['CC'] },
-      { caption: 'Thursday', blocks: ['AA', 'CC'] },
+      {
+        caption: 'Monday',
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
+      },
+      {
+        caption: 'Tuesday',
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
+      },
+      {
+        caption: 'Wednesday',
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
+      },
+      {
+        caption: 'Thursday',
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
+      },
       {
         caption: 'Friday',
-        blocks: [{ caption: 'BB', state: 'taken' }, { state: 'free' }, { state: 'free' }],
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
+      },
+      {
+        caption: 'Saturday',
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
+      },
+      {
+        caption: 'Sunday',
+        blocks: [
+          { caption: 'BB', state: 'taken' },
+          { caption: 'Free', state: 'free' },
+          { caption: 'Free', state: 'free' },
+        ],
       },
     ];
 
