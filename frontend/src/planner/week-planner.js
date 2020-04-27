@@ -5,6 +5,7 @@ export class WeekPlanner extends LitElement {
   static get properties() {
     return {
       title: { type: String },
+      data: { type: Array },
     };
   }
 
@@ -49,13 +50,19 @@ export class WeekPlanner extends LitElement {
     this.data = [];
   }
 
+  getPlannerData = async () => {
+    try {
+      const plannerData = await fetch('/planner/week/current');
+      const plannerDataJson = await plannerData.json();
+      this.data = plannerDataJson;
+    } catch (error) {
+      console.error('API Call failed', error);
+    }
+  };
+
   connectedCallback() {
     super.connectedCallback();
-    // fetch('/planner/week/2020/0')
-    //     .then(response => response.json())
-    //     .catch((e) => {
-    //       console.log("Failed to fetch week planner", e);
-    //     }).bind(this)
+    this.getPlannerData();
   }
 
   render() {
