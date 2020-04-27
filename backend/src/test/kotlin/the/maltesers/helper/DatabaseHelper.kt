@@ -4,6 +4,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.insertAndGetId
+import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import the.maltesers.planner.CreateSlot
 import the.maltesers.planner.CreatedSlot
@@ -37,4 +38,7 @@ object DatabaseHelper {
     val created = createSlot(create)
     return created to create
   }
+
+  fun countSlots(): Int =
+    SlotsTable.selectAll().count()
 }
