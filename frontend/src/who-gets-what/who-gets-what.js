@@ -1,12 +1,11 @@
 import { css, html, LitElement } from 'lit-element';
+import { WhoGetsWhatModel } from './who-gets-what-model.js';
 
 export class WhoGetsWhat extends LitElement {
   static get properties() {
     return {
       caption: String,
-      name: String,
-      selectedShape: String,
-      errors: Object,
+      model: WhoGetsWhatModel,
     };
   }
 
@@ -94,23 +93,21 @@ export class WhoGetsWhat extends LitElement {
   constructor() {
     super();
     this.caption = 'Who Gets What';
-    this.name = '';
-    this.selectedShape = '';
-    this.errors = {};
+    this.model = new WhoGetsWhatModel();
   }
 
   handleChange(event) {
     const { name, value } = event.target;
-    this[name] = value;
+    this.model[name] = value;
   }
 
   requestPPE() {
-    if (!this.name.trim()) this.errors.name = 'Name is mandatory';
-    this.requestUpdate('errors');
+    this.model.validate();
+    this.requestUpdate('model');
   }
 
   showError(field) {
-    const error = this.errors[field];
+    const error = this.model.getErrorAgainst(field);
     if (error) {
       return html`
         <span class="error">${error}</span>
@@ -131,7 +128,7 @@ export class WhoGetsWhat extends LitElement {
             name="name"
             aria-label="name"
             id="name"
-            .value="${this.name}"
+            .value="${this.model.name}"
             @change=${this.handleChange}
           />
           ${this.showError('name')}
@@ -146,7 +143,7 @@ export class WhoGetsWhat extends LitElement {
               aria-label="square"
               id="square"
               value="square"
-              ?checked="${this.selectedShape === 'square'}"
+              ?checked="${this.model.selectedShape === 'square'}"
             />
             <label for="square" class="square"></label>
 
@@ -156,7 +153,7 @@ export class WhoGetsWhat extends LitElement {
               aria-label="circle"
               id="circle"
               value="circle"
-              ?checked="${this.selectedShape === 'circle'}"
+              ?checked="${this.model.selectedShape === 'circle'}"
             />
             <label for="circle" class="circle"></label>
 
@@ -166,7 +163,7 @@ export class WhoGetsWhat extends LitElement {
               aria-label="triangle"
               id="triangle"
               value="triangle"
-              ?checked="${this.selectedShape === 'triangle'}"
+              ?checked="${this.model.selectedShape === 'triangle'}"
             />
             <label for="triangle" class="triangle"></label>
           </div>

@@ -1,7 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import { WhoGetsWhat } from '../src/who-gets-what.js';
+import '../../src/who-gets-what/who-gets-what.js';
+import { WhoGetsWhatModel } from '../../src/who-gets-what/who-gets-what-model.js';
 
-describe('Who Gets What', () => {
+describe('Who Gets What Component', () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
@@ -19,11 +20,6 @@ describe('Who Gets What', () => {
     it('renders name field', () => {
       const name = element.shadowRoot.getElementById('name');
       expect(name).to.exist;
-    });
-
-    it('should have no errors on initial render', () => {
-      const errors = element.shadowRoot.querySelectorAll('.error');
-      expect(errors.length).to.equal(0);
     });
 
     it('renders shapes as radio buttons', () => {
@@ -44,49 +40,25 @@ describe('Who Gets What', () => {
     it('passes the a11y audit', async () => {
       await expect(element).shadowDom.to.be.accessible();
     });
+  });
 
+  describe('showError', () => {
     it('should render error against name if an error against name exists', async () => {
+      const model = new WhoGetsWhatModel();
+      model.errors = { name: 'some error' };
       const whoGetsWhat = await fixture(html`
-        <who-gets-what .errors=${{ name: 'some error' }}></who-gets-what>
+        <who-gets-what .model=${model}></who-gets-what>
       `);
       const errorElement = whoGetsWhat.shadowRoot.querySelector('.error');
       expect(errorElement).to.exist;
       expect(errorElement.textContent).to.equal('some error');
     });
-  });
 
-  describe('requestPPE', () => {
-    it('should add an error when invoked without user name', () => {
-      const whoGetsWhat = new WhoGetsWhat();
-
-      whoGetsWhat.requestPPE();
-      expect(whoGetsWhat.errors.name).to.eq('Name is mandatory');
-    });
-
-    it('should not add an error on name when invoked with user name', () => {
-      const whoGetsWhat = new WhoGetsWhat();
-      whoGetsWhat.name = 'foo';
-
-      whoGetsWhat.requestPPE();
-      expect(whoGetsWhat.errors.name).to.be.undefined;
-    });
-  });
-
-  describe('showError', () => {
-    it('should add error span if there exists an error against the field', async () => {
-      const whoGetsWhat = new WhoGetsWhat();
-      whoGetsWhat.errors.fieldWithError = 'Error!';
-
-      const errorElement = await fixture(whoGetsWhat.showError('fieldWithError'));
-      expect(errorElement).to.exist;
-      expect(errorElement.getAttribute('class')).to.equal('error');
-      expect(errorElement.textContent).to.equal('Error!');
-    });
-
-    it('should not add error span if there exists no error against the field', async () => {
-      const whoGetsWhat = new WhoGetsWhat();
-
-      const errorElement = await fixture(whoGetsWhat.showError('fieldWithNoError'));
+    it('should not add error span if no error exists', async () => {
+      const whoGetsWhat = await fixture(html`
+        <who-gets-what .model=${new WhoGetsWhatModel()}></who-gets-what>
+      `);
+      const errorElement = whoGetsWhat.shadowRoot.querySelector('.error');
       expect(errorElement).to.not.exist;
     });
   });
