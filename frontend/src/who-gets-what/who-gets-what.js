@@ -173,8 +173,8 @@ export class WhoGetsWhat extends LitElement {
       </main>
 
       <p class="app-footer">
-        Made with love and passion by: Chris Birch, James Emmott, Christine Nagadya, Jyoti Singh and
-        Albert Attard
+        Made with love and passion by: Chris Birch, James Emmott, Christine Nagadya, Jyoti Singh,
+        Sai Charan and Albert Attard
       </p>
     `;
   }
