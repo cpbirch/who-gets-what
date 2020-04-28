@@ -6,6 +6,7 @@ export class WhoGetsWhat extends LitElement {
       caption: String,
       name: String,
       selectedShape: String,
+      errors: Object,
     };
   }
 
@@ -95,6 +96,7 @@ export class WhoGetsWhat extends LitElement {
     this.caption = 'Who Gets What';
     this.name = '';
     this.selectedShape = '';
+    this.errors = {};
   }
 
   handleChange(event) {
@@ -102,8 +104,20 @@ export class WhoGetsWhat extends LitElement {
     this[name] = value;
   }
 
-  /* eslint-disable class-methods-use-this */
-  requestPPE() {}
+  requestPPE() {
+    if (!this.name.trim()) this.errors.name = 'Name is mandatory';
+    this.requestUpdate('errors');
+  }
+
+  showError(field) {
+    const error = this.errors[field];
+    if (error) {
+      return html`
+        <span class="error">${error}</span>
+      `;
+    }
+    return '';
+  }
 
   render() {
     return html`
@@ -120,6 +134,7 @@ export class WhoGetsWhat extends LitElement {
             .value="${this.name}"
             @change=${this.handleChange}
           />
+          ${this.showError('name')}
         </div>
 
         <div class="field">
