@@ -8,6 +8,9 @@ export class WhoGetsWhatModel {
   validate() {
     if (!this.name.trim()) this.errors.name = 'Name is mandatory';
     if (!this.ppeType) this.errors.ppeType = 'PPE type is mandatory';
+    if (this.isValid) {
+      this.message = 'Your request has been placed successfully, allocation is pending.';
+    }
   }
 
   get isValid() {

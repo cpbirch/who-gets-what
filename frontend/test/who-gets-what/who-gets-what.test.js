@@ -92,10 +92,22 @@ describe('Who Gets What Component', () => {
   });
 
   describe('requestPPE', () => {
-    it('should call the requestUpdate lifecycle method', async () => {
+    it('should call the requestUpdate lifecycle method', () => {
       sinon.spy(component, 'requestUpdate');
       component.requestPPE();
       expect(component.requestUpdate).be.calledOnceWith('model');
+    });
+
+    it('renders the success message when present', async () => {
+      const model = new WhoGetsWhatModel();
+      model.message = 'You rock!';
+
+      component = await fixture(html`
+        <who-gets-what .model=${model}></who-gets-what>
+      `);
+
+      const successMessage = component.shadowRoot.querySelector('.success');
+      expect(successMessage.textContent).to.eq('You rock!');
     });
   });
 });

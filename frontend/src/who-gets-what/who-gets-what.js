@@ -179,6 +179,7 @@ export class WhoGetsWhat extends LitElement {
         </div>
 
         <button id="request-ppe" @click="${this.requestPPE}">Request PPE</button>
+        <div class="success">${this.model.message}</div>
       </main>
 
       <p class="app-footer">

@@ -35,13 +35,29 @@ describe('Who Gets What Model', () => {
       model.validate();
       expect(model.errors).to.not.have.property('ppeType');
     });
-    it('should not add any when invoked with all mandatory fields', () => {
+    it('should not add any error when invoked with all mandatory fields', () => {
       model.ppeType = 'square';
       model.name = 'foo';
 
       model.validate();
       expect(model.errors).to.be.empty;
       expect(model.isValid).to.be.true;
+    });
+
+    it('should not display success message when there are validation errors', () => {
+      model.errors = { name: 'Name is mandatory' };
+      model.validate();
+      expect(model).to.not.have.property('message');
+    });
+
+    it('should set message to success when invoked with all mandatory fields', () => {
+      model.ppeType = 'square';
+      model.name = 'foo';
+
+      model.validate();
+      expect(model.message).to.eq(
+        'Your request has been placed successfully, allocation is pending.',
+      );
     });
   });
 
