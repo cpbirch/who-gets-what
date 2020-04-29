@@ -87,6 +87,10 @@ export class WhoGetsWhat extends LitElement {
         border-right: 15px solid transparent;
         border-bottom: 30px solid green;
       }
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
     `;
   }
 
@@ -98,7 +102,8 @@ export class WhoGetsWhat extends LitElement {
 
   handleChange(event) {
     const { name, value } = event.target;
-    this.model[name] = value;
+    this.model.updateField(name, value);
+    this.requestUpdate('model');
   }
 
   requestPPE() {
@@ -129,7 +134,7 @@ export class WhoGetsWhat extends LitElement {
             aria-label="name"
             id="name"
             .value="${this.model.name}"
-            @change=${this.handleChange}
+            @change="${this.handleChange}"
           />
           ${this.showError('name')}
         </div>
@@ -139,33 +144,37 @@ export class WhoGetsWhat extends LitElement {
           <div class="shapes">
             <input
               type="radio"
-              name="shapes"
+              name="shape"
               aria-label="square"
               id="square"
               value="square"
-              ?checked="${this.model.selectedShape === 'square'}"
+              @change=${this.handleChange}
+              ?checked="${this.model.shape === 'square'}"
             />
             <label for="square" class="square"></label>
 
             <input
               type="radio"
-              name="shapes"
+              name="shape"
               aria-label="circle"
               id="circle"
               value="circle"
-              ?checked="${this.model.selectedShape === 'circle'}"
+              @change=${this.handleChange}
+              ?checked="${this.model.shape === 'circle'}"
             />
             <label for="circle" class="circle"></label>
 
             <input
               type="radio"
-              name="shapes"
+              name="shape"
               aria-label="triangle"
               id="triangle"
               value="triangle"
-              ?checked="${this.model.selectedShape === 'triangle'}"
+              @change=${this.handleChange}
+              ?checked="${this.model.shape === 'triangle'}"
             />
             <label for="triangle" class="triangle"></label>
+            ${this.showError('shape')}
           </div>
         </div>
 
