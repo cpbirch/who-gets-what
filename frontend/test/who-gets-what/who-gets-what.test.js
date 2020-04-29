@@ -79,7 +79,7 @@ describe('Who Gets What Component', () => {
 
     it('should render error against name if an error against name exists', async () => {
       const model = new WhoGetsWhatModel();
-      const modelStub = sinon.stub(model, 'errors').value({ name: 'some error' });
+      model.errors = { name: 'some error' };
 
       component = await fixture(html`
         <who-gets-what .model=${model}></who-gets-what>
@@ -88,8 +88,6 @@ describe('Who Gets What Component', () => {
 
       expect(errorcomponent).to.exist;
       expect(errorcomponent.textContent).to.equal('some error');
-
-      modelStub.restore();
     });
   });
 

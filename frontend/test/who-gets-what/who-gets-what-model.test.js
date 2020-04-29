@@ -23,20 +23,20 @@ describe('Who Gets What Model', () => {
       expect(model.errors).to.not.have.property('name');
     });
 
-    it('should add an error when invoked without a shape', () => {
+    it('should add an error when invoked without specifying the PPE type', () => {
       model.validate();
-      expect(model.errors.shape).to.eq('Shape is mandatory');
+      expect(model.errors.ppeType).to.eq('PPE type is mandatory');
       expect(model.isValid).to.be.false;
     });
 
-    it('should not add an error on name when invoked with a shape', () => {
-      model.shape = 'square';
+    it('should not add an error on name when invoked with the PPE Type specified', () => {
+      model.ppeType = 'square';
 
       model.validate();
-      expect(model.errors).to.not.have.property('shape');
+      expect(model.errors).to.not.have.property('ppeType');
     });
     it('should not add any when invoked with all mandatory fields', () => {
-      model.shape = 'square';
+      model.ppeType = 'square';
       model.name = 'foo';
 
       model.validate();
@@ -53,7 +53,8 @@ describe('Who Gets What Model', () => {
     });
 
     it('should return undefined if no error against the field exists', () => {
-      expect(model.getErrorAgainst('selectedShape')).to.be.undefined;
+      model.errors.name = 'Name error';
+      expect(model.getErrorAgainst('ppeType')).to.be.undefined;
     });
   });
 
@@ -66,12 +67,12 @@ describe('Who Gets What Model', () => {
       expect(model.errors).to.not.have.property('name');
     });
 
-    it('should delete the shape field from the errors property', () => {
-      model.errors.shape = 'Shape error';
+    it('should delete the ppeType field from the errors property', () => {
+      model.errors.ppeType = 'ppeType error';
 
-      expect(model.errors).to.have.property('shape');
-      model.updateField('shape', 'circle');
-      expect(model.errors).to.not.have.property('shape');
+      expect(model.errors).to.have.property('ppeType');
+      model.updateField('ppeType', 'circle');
+      expect(model.errors).to.not.have.property('ppeType');
     });
 
     it('should update the name property to the provided value', () => {

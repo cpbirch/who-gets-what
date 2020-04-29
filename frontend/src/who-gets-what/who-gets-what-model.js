@@ -1,13 +1,13 @@
 export class WhoGetsWhatModel {
   constructor() {
     this.name = '';
-    this.shape = '';
+    this.ppeType = '';
     this.errors = {};
   }
 
   validate() {
     if (!this.name.trim()) this.errors.name = 'Name is mandatory';
-    if (!this.shape) this.errors.shape = 'Shape is mandatory';
+    if (!this.ppeType) this.errors.ppeType = 'PPE type is mandatory';
   }
 
   get isValid() {

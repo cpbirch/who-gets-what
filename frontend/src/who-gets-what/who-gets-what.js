@@ -42,7 +42,7 @@ export class WhoGetsWhat extends LitElement {
         margin-left: 5px;
       }
 
-      .shapes,
+      .ppeTypes,
       .field {
         display: flex;
         align-items: center;
@@ -59,11 +59,11 @@ export class WhoGetsWhat extends LitElement {
         font-size: 1em;
       }
 
-      .shapes > div:first-child {
+      .ppeTypes > div:first-child {
         margin-left: 0px;
       }
 
-      .shapes > div {
+      .ppeTypes > div {
         margin-left: 10px;
       }
 
@@ -140,41 +140,41 @@ export class WhoGetsWhat extends LitElement {
         </div>
 
         <div class="field">
-          <label for="shape"><b>Shape:</b></label>
-          <div class="shapes">
+          <label for="ppeType"><b>PPE Type:</b></label>
+          <div class="ppeTypes">
             <input
               type="radio"
-              name="shape"
+              name="ppeType"
               aria-label="square"
               id="square"
               value="square"
               @change=${this.handleChange}
-              ?checked="${this.model.shape === 'square'}"
+              ?checked="${this.model.ppeType === 'square'}"
             />
             <label for="square" class="square"></label>
 
             <input
               type="radio"
-              name="shape"
+              name="ppeType"
               aria-label="circle"
               id="circle"
               value="circle"
               @change=${this.handleChange}
-              ?checked="${this.model.shape === 'circle'}"
+              ?checked="${this.model.ppeType === 'circle'}"
             />
             <label for="circle" class="circle"></label>
 
             <input
               type="radio"
-              name="shape"
+              name="ppeType"
               aria-label="triangle"
               id="triangle"
               value="triangle"
               @change=${this.handleChange}
-              ?checked="${this.model.shape === 'triangle'}"
+              ?checked="${this.model.ppeType === 'triangle'}"
             />
             <label for="triangle" class="triangle"></label>
-            ${this.showError('shape')}
+            ${this.showError('ppeType')}
           </div>
         </div>
 
