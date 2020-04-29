@@ -28,13 +28,13 @@ describe('Enter name and select shape', () => {
         expect(nameInput).toHaveValue(name);
     })
 
-    it('should click on any one of the shapes', () => {
+    it('should select any one of the PPE Types', () => {
         const randomIndex = Math.floor((Math.random() * 3));
-        const shapes = component.shadow$$('input[name="shapes"]');
+        const ppeTypes = component.shadow$$('input[name="ppeType"]');
 
-        shapes[randomIndex].click();
+        ppeTypes[randomIndex].click();
 
-        expect(shapes[randomIndex]).toBeChecked();
+        expect(ppeTypes[randomIndex]).toBeChecked();
     })
 
 })
