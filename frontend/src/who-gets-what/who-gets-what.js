@@ -23,6 +23,13 @@ export class WhoGetsWhat extends LitElement {
         margin: 0 auto;
         text-align: center;
       }
+      .title {
+        font-size: 1.5em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
 
       main {
         flex-grow: 1;
@@ -87,6 +94,12 @@ export class WhoGetsWhat extends LitElement {
         border-right: 15px solid transparent;
         border-bottom: 30px solid green;
       }
+
+      button {
+        padding: 20px;
+        font-size: 1em;
+        margin: 10px auto;
+      }
       .error {
         color: red;
         font-size: 0.9em;
@@ -124,7 +137,7 @@ export class WhoGetsWhat extends LitElement {
   render() {
     return html`
       <main>
-        <div>${this.caption}</div>
+        <div class="title">${this.caption}</div>
 
         <div class="field">
           <label for="name"><b>Name:</b></label>
