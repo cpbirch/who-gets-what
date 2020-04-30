@@ -36,17 +36,17 @@ open class SampleDataLoader(private val database: Database) {
             it[Random.nextInt(it.size)]
           }
 
-          val title = when (state) {
-            SlotState.FREE -> "Free"
-            else -> listOf("AA", "BB", "CC").random()
+          val ppeType = when (state) {
+            SlotState.FREE -> "free"
+            else -> listOf("circle", "square", "triangle").random()
           }
 
-          val slot = CreateSlot(date, title, state)
+          val slot = CreateSlot(date, ppeType, state)
           SlotsTable.insert {
             it[SlotsTable.year] = slot.year
             it[SlotsTable.week] = slot.week
             it[SlotsTable.date] = slot.date
-            it[SlotsTable.title] = slot.title
+            it[SlotsTable.ppeType] = slot.ppeType
             it[SlotsTable.state] = slot.state
           }
         }

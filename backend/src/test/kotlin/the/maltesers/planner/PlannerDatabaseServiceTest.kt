@@ -103,13 +103,13 @@ class PlannerDatabaseServiceTest(
       /* TODO: Consider moving this into a custom matcher */
       expected.forEach { e ->
         val expectedDayOfWeek = e.date.dayOfWeek.name
-        val expectedTitle = e.title
+        val expectedPPEType = e.ppeType
         val expectedState = e.state
 
         val slotsInDay = result.firstOrNull { it.title == expectedDayOfWeek }
         slotsInDay shouldNotBe null
 
-        val slot = slotsInDay?.slots?.firstOrNull { it.title == expectedTitle }
+        val slot = slotsInDay?.slots?.firstOrNull { it.ppeType == expectedPPEType }
         slot shouldNotBe null
         slot?.state shouldBe expectedState
       }

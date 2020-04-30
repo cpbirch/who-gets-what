@@ -36,13 +36,13 @@ object SlotHelper {
         }
       }
 
-    val title = "Random slot [${UUID.randomUUID()}]"
+    val ppeType = "Random slot [${UUID.randomUUID()}]"
 
     val state = SlotState.values().let {
       it[Random.nextInt(it.size)]
     }
 
-    return CreateSlot(date = date, title = title, state = state).apply {
+    return CreateSlot(date = date, ppeType = ppeType, state = state).apply {
       /* Make sure that the above did not mess up something */
       require(year == this.year) { "Expected the date $date to have the year $year" }
       require(week == this.week) {

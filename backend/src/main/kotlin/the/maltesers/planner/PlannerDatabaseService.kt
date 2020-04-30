@@ -7,8 +7,8 @@ import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import the.maltesers.clock.ClockService
 import the.maltesers.planner.SlotsTable.date
+import the.maltesers.planner.SlotsTable.ppeType
 import the.maltesers.planner.SlotsTable.state
-import the.maltesers.planner.SlotsTable.title
 import the.maltesers.planner.SlotsTable.week
 import the.maltesers.planner.SlotsTable.year
 
@@ -35,7 +35,7 @@ class PlannerDatabaseService(
         .andWhere { week eq currentWeek.week }
         .orderBy(date)
         .map {
-          it[date].dayOfWeek to Slot(title = it[title], state = it[state])
+          it[date].dayOfWeek to Slot(ppeType = it[ppeType], state = it[state])
         }
         .groupBy({ it.first.name }, { it.second })
         .map { Slots(it.key, it.value) }

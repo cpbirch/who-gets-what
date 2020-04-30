@@ -25,16 +25,16 @@ class FetchWeekPlannerControllerTest(
     val slots = listOf(
       Slots(
         title = "Monday", slots = listOf(
-          Slot(title = "AA", state = SlotState.TAKEN),
-          Slot(title = "Free", state = SlotState.FREE),
-          Slot(title = "Free", state = SlotState.FREE)
+          Slot(ppeType = "circle", state = SlotState.TAKEN),
+          Slot(ppeType = "Free", state = SlotState.FREE),
+          Slot(ppeType = "Free", state = SlotState.FREE)
         )
       ),
       Slots(
         title = "Tuesday", slots = listOf(
-          Slot(title = "BB", state = SlotState.TAKEN),
-          Slot(title = "CC", state = SlotState.TAKEN),
-          Slot(title = "AA", state = SlotState.TAKEN)
+          Slot(ppeType = "square", state = SlotState.TAKEN),
+          Slot(ppeType = "triangle", state = SlotState.TAKEN),
+          Slot(ppeType = "circle", state = SlotState.TAKEN)
         )
       )
     )

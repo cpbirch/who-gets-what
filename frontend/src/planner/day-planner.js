@@ -29,19 +29,49 @@ export class DayPlanner extends LitElement {
       }
 
       .slot {
-        border: 1px solid #000066;
+        border-width: 0px 1px 1px;
+        border-color: #000066;
+        border-style: solid;
         color: white;
         padding-top: 12px;
         padding-bottom: 12px;
       }
 
-      .free {
-        background-color: #eeeeee;
+      .slot[data-state='FREE'] {
+        background-color: #fafafa;
         color: #222222;
       }
 
-      .taken {
-        background-color: #0000ff;
+      .free::after {
+        content: 'FREE';
+        line-height: 30px;
+        font-size: 0.8em;
+      }
+
+      .square {
+        height: 30px;
+        width: 30px;
+        background-color: blue;
+      }
+
+      .circle {
+        height: 30px;
+        width: 30px;
+        background-color: yellow;
+        border-radius: 50%;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 30px solid green;
+      }
+
+      .slot[data-state='TAKEN'] {
+        justify-content: center;
+        display: flex;
       }
     `;
   }
@@ -60,7 +90,9 @@ export class DayPlanner extends LitElement {
           ${this.slots.map(
             slot =>
               html`
-                <div class=${`slot ${slot.state}`}>${slot.title}</div>
+                <div class="slot" data-state="${slot.state}">
+                  <div class="${slot.ppeType}"></div>
+                </div>
               `,
           )}
         </div>

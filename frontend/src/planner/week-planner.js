@@ -29,7 +29,11 @@ export class WeekPlanner extends LitElement {
       }
 
       .title {
-        margin: 12px;
+        font-size: 1.5em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
       }
 
       .days-container {

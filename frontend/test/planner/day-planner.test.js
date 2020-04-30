@@ -32,9 +32,9 @@ describe('Day Planner', () => {
 
   it('renders blocks', async () => {
     const slots = [
-      { title: 'AA', state: 'free' },
-      { title: 'BB', state: 'free' },
-      { title: 'CC', state: 'free' },
+      { ppeType: 'circle', state: 'free' },
+      { ppeType: 'square', state: 'free' },
+      { ppeType: 'triangle', state: 'free' },
     ];
     const planner = await fixture(
       html`
@@ -42,7 +42,7 @@ describe('Day Planner', () => {
       `,
     );
 
-    const elements = planner.shadowRoot.querySelectorAll('div[class="slot free"]');
+    const elements = planner.shadowRoot.querySelectorAll(`.slot[data-state="free"]`);
     expect(elements).to.exist;
     expect(elements.length).to.eq(3);
   });

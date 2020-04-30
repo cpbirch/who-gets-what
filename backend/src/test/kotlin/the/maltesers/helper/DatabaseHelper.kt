@@ -28,7 +28,7 @@ object DatabaseHelper {
       it[year] = create.year
       it[week] = create.week
       it[date] = create.date
-      it[title] = create.title
+      it[ppeType] = create.ppeType
       it[state] = create.state
     }.let {
       CreatedSlot(slotId = it.value)
