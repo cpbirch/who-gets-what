@@ -72,6 +72,9 @@ export class WeekPlanner extends LitElement {
   render() {
     return html`
       <div class="week-planner">
+        <div class="navigation">
+          <a href="/index.html">Home</a>
+        </div>
         <div class="title">${this.title}</div>
 
         <div class="days-container">

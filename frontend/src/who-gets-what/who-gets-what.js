@@ -104,6 +104,9 @@ export class WhoGetsWhat extends LitElement {
         color: red;
         font-size: 0.9em;
       }
+
+      .navigation {
+      }
     `;
   }
 
@@ -137,6 +140,9 @@ export class WhoGetsWhat extends LitElement {
   render() {
     return html`
       <main>
+        <div class="navigation">
+          <a href="/planner.html">Planner</a>
+        </div>
         <div class="title">${this.caption}</div>
 
         <div class="field">
